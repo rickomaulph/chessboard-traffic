@@ -98,7 +98,7 @@ const QuestionModal: React.FC = () => {
         {isWhiteSquare && currentCapture?.signImage && (
           <div className="mb-4 flex justify-center">
             <img 
-              src={`/signs/${currentCapture.signImage}.png`} 
+              src={`/traffic-chess/signs/${currentCapture.signImage}.png`}
               alt="Traffic Sign" 
               className="h-32 object-contain"
               onError={(e) => {

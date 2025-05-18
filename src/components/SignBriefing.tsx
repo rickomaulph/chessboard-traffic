@@ -53,7 +53,7 @@ const SignBriefing: React.FC<SignBriefingProps> = ({ onClose }) => {
               >
                 <div className="flex justify-center mb-3">
                   <img 
-                    src={`/signs/${sign.id}.png`} 
+                    src={`/traffic-chess/signs/${sign.id}.png`}
                     alt={sign.name}
                     className="h-20 object-contain transition-transform duration-300 hover:scale-110"
                     onError={(e) => {
