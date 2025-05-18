@@ -102,7 +102,7 @@ const QuestionModal: React.FC = () => {
               alt="Traffic Sign" 
               className="h-32 object-contain"
               onError={(e) => {
-                e.currentTarget.src = 'https://via.placeholder.com/120?text=Sign';
+                e.currentTarget.src = `/icon traffic/${Math.floor(Math.random() * 33) + 1}.png`;
               }}
             />
           </div>
