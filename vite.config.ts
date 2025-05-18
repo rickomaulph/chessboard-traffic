@@ -7,4 +7,9 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  base: '/traffic-chess/',
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+  }
 });
