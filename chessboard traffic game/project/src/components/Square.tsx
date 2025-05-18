@@ -1,7 +1,6 @@
 import React from 'react';
 import { PieceData } from '../types/gameTypes';
-import { LucideCrop as LucideProps } from 'lucide-react';
-import * as Icons from 'lucide-react';
+import { trafficSigns } from '../data/trafficSigns';
 
 interface SquareProps {
   row: number;
@@ -32,42 +31,6 @@ const Square: React.FC<SquareProps> = ({
 
   const pieceColor = piece?.player === 'A' ? 'text-red-500' : 'text-blue-500';
 
-  // Map traffic sign names to Lucide icons
-  const getTrafficIcon = (signName: string): React.FC<LucideProps> => {
-    const iconMap: { [key: string]: React.FC<LucideProps> } = {
-      'warning': Icons.AlertTriangle,
-      'no-entry': Icons.XCircle,
-      'parking': Icons.SquareParking,
-      'pedestrian': Icons.Person,
-      'bicycle': Icons.Bike,
-      'traffic-light': Icons.Traffic,
-      'construction': Icons.HardHat,
-      'one-way': Icons.ArrowRight,
-      'no-u-turn': Icons.Undo,
-      'roundabout': Icons.RotateCcw,
-      'curve-right': Icons.CornerRightDown,
-      'curve-left': Icons.CornerLeftDown,
-      'y-intersection': Icons.GitBranch,
-      'narrow-bridge': Icons.MinusSquare,
-      'overtaking': Icons.CarFront,
-      'winding-road': Icons.WavyLine,
-      'road-narrows': Icons.ArrowRightFromLine,
-      'landslide': Icons.Mountain,
-      'first-aid': Icons.Heart,
-      'slippery': Icons.Waves,
-      'right-turn': Icons.ArrowRight,
-      'crossroads': Icons.Plus,
-      'falling-rocks': Icons.Cloud,
-      'give-way': Icons.ArrowDown,
-      'steep-hill': Icons.TrendingUp,
-      'left-turn': Icons.ArrowLeft,
-      'pedestrian-crossing': Icons.PersonStanding,
-      'no-stopping': Icons.Ban,
-      'no-bicycles': Icons.BikeLock
-    };
-
-    return iconMap[signName] || Icons.CircleDot;
-  };
 
   return (
     <div 
@@ -77,18 +40,11 @@ const Square: React.FC<SquareProps> = ({
       {/* Traffic sign (on white squares) */}
       {!isBlack && sign && (
         <div className="absolute inset-1 flex items-center justify-center">
-          {sign === 'stop' ? (
-            <img 
-              src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Stop%20sign/Flat/stop_sign_flat.png" 
-              alt="Stop Sign"
-              className="w-8 h-8 object-contain opacity-70"
-            />
-          ) : (
-            React.createElement(getTrafficIcon(sign), {
-              size: 24,
-              className: "text-gray-700 opacity-50"
-            })
-          )}
+          <img 
+            src={`/icon traffic/${trafficSigns.findIndex(s => s.id === sign) + 1}.png`}
+            alt={trafficSigns.find(s => s.id === sign)?.name || 'Traffic Sign'}
+            className="w-16 h-16 object-contain opacity-80"
+          />
         </div>
       )}
 
