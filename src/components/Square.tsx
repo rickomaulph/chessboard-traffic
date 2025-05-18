@@ -21,20 +21,26 @@ const Square: React.FC<SquareProps> = ({
   isValidMove, 
   onClick 
 }) => {
-  let bgColor = isBlack ? 'bg-gray-800' : 'bg-white';
+  let bgColor = isBlack 
+    ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
+    : 'bg-gradient-to-br from-white to-blue-50';
   
   if (isSelected) {
-    bgColor = 'bg-blue-300';
+    bgColor = 'bg-gradient-to-br from-blue-400 to-blue-500 shadow-lg shadow-blue-400/50';
   } else if (isValidMove) {
-    bgColor = isBlack ? 'bg-green-800/50' : 'bg-green-200/80';
+    bgColor = isBlack 
+      ? 'bg-gradient-to-br from-green-900/70 to-green-800/70' 
+      : 'bg-gradient-to-br from-green-200/90 to-green-100/90';
   }
 
-  const pieceColor = piece?.player === 'A' ? 'text-red-500' : 'text-blue-500';
+  const pieceColor = piece?.player === 'A' 
+    ? 'text-red-600 [filter:drop-shadow(0_0_6px_rgba(220,38,38,0.7))]' 
+    : 'text-blue-600 [filter:drop-shadow(0_0_6px_rgba(37,99,235,0.7))]';
 
 
   return (
     <div 
-      className={`${bgColor} aspect-square w-full h-full min-w-10 min-h-10 relative flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity`}
+      className={`${bgColor} aspect-square w-full h-full min-w-10 min-h-10 relative flex items-center justify-center cursor-pointer transition-all duration-300 hover:shadow-inner hover:shadow-blue-200/30`}
       onClick={onClick}
     >
       {/* Traffic sign (on white squares) */}
@@ -43,7 +49,7 @@ const Square: React.FC<SquareProps> = ({
           <img 
             src={`/src/icon traffic/${trafficSigns.findIndex(s => s.id === sign) + 1}.png`}
             alt={trafficSigns.find(s => s.id === sign)?.name || 'Traffic Sign'}
-            className="w-16 h-16 object-contain opacity-80"
+            className="w-16 h-16 object-contain opacity-90 drop-shadow-md transition-transform duration-300 hover:scale-110"
           />
         </div>
       )}
@@ -51,7 +57,7 @@ const Square: React.FC<SquareProps> = ({
       {/* Piece (traffic cone) */}
       {piece && (
         <div 
-          className={`${pieceColor} ${isSelected ? 'animate-highlight' : ''} z-10`}
+          className={`${pieceColor} ${isSelected ? 'animate-highlight [box-shadow:inset_0_0_12px_2px_rgba(255,255,255,0.8)]' : ''} z-10 ring-2 ring-white/50 hover:[filter:drop-shadow(0_0_8px_currentColor)]`}
           style={{ 
             width: '70%', 
             height: '70%', 
@@ -63,7 +69,7 @@ const Square: React.FC<SquareProps> = ({
           <svg 
             viewBox="0 0 24 24" 
             fill="currentColor"
-            className="w-full h-full"
+            className="w-full h-full hover:scale-110 transition-transform duration-200"
           >
             <path d="M4.5,19.5h15v2h-15V19.5z M10.23,7.83C9.6,5.9,9,4,9,4h6c0,0-0.6,1.9-1.23,3.83L10.23,7.83z M19.84,18.5H4.16
               l0.88-3.03C5.44,14.09,6.74,13,8.19,13h7.63c1.45,0,2.75,1.09,3.15,2.47L19.84,18.5z M15.05,11.15
@@ -75,7 +81,7 @@ const Square: React.FC<SquareProps> = ({
 
       {/* Valid move indicator */}
       {isValidMove && !piece && (
-        <div className="absolute w-1/3 h-1/3 rounded-full bg-green-500/60 animate-pulse"></div>
+        <div className="absolute w-1/3 h-1/3 rounded-full bg-gradient-to-r from-green-400 to-green-500 shadow-inner shadow-green-200/50 animate-pulse"></div>
       )}
     </div>
   );

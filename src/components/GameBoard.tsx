@@ -60,16 +60,16 @@ const GameBoard: React.FC = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-gradient-to-br from-blue-50 to-white min-h-screen p-4">
       {showQuestion && <QuestionModal />}
       <div className="flex flex-col items-center">
-        <div className="grid grid-cols-9 grid-rows-9 board-shadow rounded-md overflow-hidden border-4 border-gray-800">
+        <div className="grid grid-cols-9 grid-rows-9 rounded-xl overflow-hidden border-2 border-blue-200/50 shadow-xl shadow-blue-200/30 backdrop-blur-sm">
           {/* Column labels (a-h) */}
-          <div className="bg-gray-700 text-white flex items-center justify-center font-bold">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white flex items-center justify-center font-bold">
             {/* Corner cell */}
           </div>
           {['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map((col, i) => (
-            <div key={`col-${i}`} className="bg-gray-700 text-white flex items-center justify-center font-bold">
+            <div key={`col-${i}`} className="bg-gradient-to-r from-blue-600 to-blue-700 text-white flex items-center justify-center font-bold">
               {col}
             </div>
           ))}
@@ -78,7 +78,7 @@ const GameBoard: React.FC = () => {
           {gameState.board.map((row, rowIndex) => (
             <React.Fragment key={`row-${rowIndex}`}>
               {/* Row label (1-8) */}
-              <div className="bg-gray-700 text-white flex items-center justify-center font-bold">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white flex items-center justify-center font-bold">
                 {8 - rowIndex}
               </div>
               
@@ -91,11 +91,11 @@ const GameBoard: React.FC = () => {
                   isBlack={(rowIndex + colIndex) % 2 === 1}
                   piece={square.piece}
                   sign={square.signId}
-                  isSelected={
+                  isSelected={Boolean(
                     selectedPiece && 
                     selectedPiece.row === rowIndex && 
                     selectedPiece.col === colIndex
-                  }
+                  )}
                   isValidMove={validMoves.some(
                     move => move.row === rowIndex && move.col === colIndex
                   )}
@@ -106,10 +106,11 @@ const GameBoard: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-4 text-center">
-          <p className="text-xl font-semibold">
+        <div className="mt-6 text-center">
+          <p className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
             {currentPlayer === 'A' ? 'Tim A' : 'Tim B'} Giliran
           </p>
+          <div className="mt-2 h-1 w-32 mx-auto bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"></div>
         </div>
       </div>
     </div>
