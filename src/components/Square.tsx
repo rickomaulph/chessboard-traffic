@@ -41,7 +41,7 @@ const Square: React.FC<SquareProps> = ({
       {!isBlack && sign && (
         <div className="absolute inset-1 flex items-center justify-center">
           <img 
-            src={`/icon traffic/${trafficSigns.findIndex(s => s.id === sign) + 1}.png`}
+            src={`/src/icon traffic/${trafficSigns.findIndex(s => s.id === sign) + 1}.png`}
             alt={trafficSigns.find(s => s.id === sign)?.name || 'Traffic Sign'}
             className="w-16 h-16 object-contain opacity-80"
           />
