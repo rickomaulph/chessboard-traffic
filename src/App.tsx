@@ -23,7 +23,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 flex flex-col">
       <header className="bg-blue-700 text-white p-4 shadow-md">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl md:text-3xl font-bold">Traffic Chess</h1>
+          <h1 className="text-2xl md:text-3xl font-bold"> SATE ELANG (salah tebak, kena tilang!)</h1>
           <button 
             onClick={() => setShowRules(true)}
             className="px-4 py-2 bg-blue-600 hover:bg-blue-800 rounded transition-colors"
@@ -48,7 +48,7 @@ function App() {
 
       <footer className="bg-blue-800 text-white py-3 text-center text-sm">
         <div className="container mx-auto">
-          <p>Traffic Chess - Educational Game © 2025</p>
+          <p>SATE ELANG (salah tebak, kena tilang!) - Educational Game © 2025</p>
         </div>
       </footer>
     </div>
